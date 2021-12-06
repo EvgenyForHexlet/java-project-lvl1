@@ -1,0 +1,16 @@
+name: github-actions-build
+
+on:
+  push:
+    branches:
+      - '**'
+    tags:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build with Gradle
+        run: make build
