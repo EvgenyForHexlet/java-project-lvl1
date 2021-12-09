@@ -1,13 +1,12 @@
 package hexlet.code;
 
 
-import static hexlet.code.Cli.doSomeStaff;
+import hexlet.code.games.Start;
 
 public class App {
 
     public static void main(String[] args) {
-        //new Start().play();
-        doSomeStaff();
+        new Start().play();
 
     }
 }
