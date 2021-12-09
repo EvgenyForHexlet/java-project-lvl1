@@ -2,12 +2,14 @@ package hexlet.code.games.impl;
 
 public class GreetGame extends AbstractGame<String> {
 
+    private static final int GAME_NUMBER = 1;
     /**
      * game number.
+     *
      * @return game number.
      */
     public int getGameNumber() {
-        return 1;
+        return GAME_NUMBER;
     }
 
     /**

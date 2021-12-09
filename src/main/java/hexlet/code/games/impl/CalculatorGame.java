@@ -2,11 +2,13 @@ package hexlet.code.games.impl;
 
 
 import static hexlet.code.common.MyMath.getRandomNumber;
-import static hexlet.code.common.MyMath.isEven;
+import static hexlet.code.common.MyMath.processArithmeticOperation;
+import static hexlet.code.common.MyMath.randomArithmeticOperation;
 
-public class EvenGame extends AbstractGame<String> {
+public class CalculatorGame extends AbstractGame<Integer> {
 
-    private static final int GAME_NUMBER = 2;
+    private static final int GAME_NUMBER = 3;
+
     /**
      * game number.
      *
@@ -18,10 +20,11 @@ public class EvenGame extends AbstractGame<String> {
 
     /**
      * game name.
+     *
      * @return game name.
      */
     public String getName() {
-        return "Even";
+        return "Calc";
     }
 
     /**
@@ -29,12 +32,14 @@ public class EvenGame extends AbstractGame<String> {
      */
     public void play() {
         int counter = 0;
-        getCli().printLine("Answer 'yes' if number even otherwise answer 'no'");
+        getCli().printLine("What is the result of he expression?");
         while (counter < getSharedMemory().getTries()) {
-            int number = getRandomNumber();
-            getCli().printLine("Question: " + number);
-            String answer = askYesOrNo();
-            String rightAnswer = isEven(number) ? "yes" : "no";
+            int number1 = getRandomNumber();
+            int number2 = getRandomNumber();
+            String op = randomArithmeticOperation();
+            getCli().printLine("Question: " + number1 + " " + op + " " + number2);
+            Integer answer = askForAnswer();
+            Integer rightAnswer = processArithmeticOperation(number1, number2, op);
 
             if (!assertAnswer(rightAnswer, answer)) {
                 break;
@@ -46,6 +51,5 @@ public class EvenGame extends AbstractGame<String> {
             getCli().printLine(getSharedMemory().sayCongrats());
         }
     }
-
 
 }

@@ -6,3 +6,7 @@
 Task 5: Even
 
 ![alt text](./src/main/resources/2021-12-09_19h03_30.png "demo")
+
+Task 6: Calc
+
+![alt text](./src/main/resources/2021-12-09_20h50_16.png "demo")

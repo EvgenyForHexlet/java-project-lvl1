@@ -1,9 +1,6 @@
 package hexlet.code.games;
 
-//import hexlet.code.games.common.SharedMemory;
-
-//import hexlet.code.games.impl.CalculatorGame;
-
+import hexlet.code.games.impl.CalculatorGame;
 import hexlet.code.games.impl.EvenGame;
 import hexlet.code.common.SharedMemory;
 import hexlet.code.errors.Error;
@@ -22,29 +19,31 @@ import hexlet.code.games.impl.GreetGame;
  */
 public class Start {
 
-    private final Cli ioManager;
+    private final Cli cli;
     private Game[] games;
     private final Game greetGame = new GreetGame();
     private final Game exit = new Exit();
     private final Game error = new Error();
     private static final int TRIES = 3;
-    private static final int NUMBER_OF_ALL_GAMES = 3;
+    private static final int NUMBER_OF_ALL_GAMES = 4;
 
 
     /**
      * default constructor.
      */
     public Start() {
-        ioManager = Cli.getIOManager();
+        cli = Cli.getIOManager();
         SharedMemory.getSharedMemory().setTries(TRIES);
         games = new Game[NUMBER_OF_ALL_GAMES];
-        games[0] = greetGame;
-//        games[1] = new CalculatorGame();
+        games[greetGame.getGameNumber()] = greetGame;
 //        games[2] = new ProgressionGame();
-        games[1] = new EvenGame();
+        Game even = new EvenGame();
+        games[even.getGameNumber()] = even;
+        Game calc = new CalculatorGame();
+        games[calc.getGameNumber()] = calc;
 //        games[4] = new GCDGame();
 //        games[5] = new PrimeGame();
-        games[2] = exit;
+        games[exit.getGameNumber()] = exit;
     }
 
     /**
@@ -52,9 +51,9 @@ public class Start {
      */
     public void play() {
 
-        ioManager.printLine("Please enter the game number and press Enter.");
-        ioManager.printLines(generateGameLines());
-        Integer number = ioManager.askForInt("Your choice: ");
+        cli.printLine("Please enter the game number and press Enter.");
+        cli.printLines(generateGameLines());
+        Integer number = cli.askForInt("Your choice: ");
 
         Game game = findGameByNumber(number);
         if (game.equals(greetGame) || game.equals(exit) || game.equals(error)) {
@@ -69,10 +68,12 @@ public class Start {
     private String[] generateGameLines() {
 
         String[] lines = new String[games.length];
-        for (int i = 0; i < games.length; i++) {
+        for (int i = 1; i < games.length; i++) {
             String line = games[i].getGameNumber() + " - " + games[i].getName();
             lines[i] = line;
         }
+        int exitNumber = 0;
+        lines[exitNumber] = games[exitNumber].getGameNumber() + " - " + games[exitNumber].getName();
         return lines;
     }
 
