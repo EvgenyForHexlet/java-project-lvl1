@@ -3,8 +3,8 @@ package hexlet.code.common;
 public final class SharedMemory {
 
     private static SharedMemory sharedMemory;
-    private String user;
-    private int tries;
+    private static String user;
+    private static int tries;
 
     private SharedMemory() {
         user = "";
@@ -34,11 +34,11 @@ public final class SharedMemory {
         return tries;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUser(String theUser) {
+        this.user = theUser;
     }
 
-    public void setTries(int tries) {
-        this.tries = tries;
+    public void setTries(int theTries) {
+        this.tries = theTries;
     }
 }
