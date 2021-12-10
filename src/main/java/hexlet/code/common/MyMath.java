@@ -7,7 +7,7 @@ public class MyMath {
     private static final int BOUND = 100;
 
     private static final int ARRAY_LENGTH = 8;
-    private static final int RANDOM_STEP_BOUNBD = 5;
+    private static final int RANDOM_STEP_BOUNBD = 8;
     private static final int RANDOM_START_POINT_BOUND = 10;
 
     private static final String[] OPERATIONS = {"+", "-", "*"};
@@ -40,7 +40,7 @@ public class MyMath {
 
     public static int[] randomProgression() {
         int[] result = new int[ARRAY_LENGTH];
-        int step = new Random().nextInt(RANDOM_STEP_BOUNBD);
+        int step = new Random().nextInt(RANDOM_STEP_BOUNBD) + 1;
         result[0] = new Random().nextInt(RANDOM_START_POINT_BOUND);
 
         for (int i = 1; i < result.length; i++) {

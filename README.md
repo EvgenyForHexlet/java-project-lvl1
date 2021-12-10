@@ -14,3 +14,7 @@ Task 6: Calc
 Task 7: GCD
 
 ![alt text](./src/main/resources/2021-12-10_19h44_35.png "GCD")
+
+Task 8: Progression
+
+![alt text](./src/main/resources/2021-12-10_20h06_33.png "GCD")
