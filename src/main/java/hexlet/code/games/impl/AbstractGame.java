@@ -34,7 +34,7 @@ public abstract class AbstractGame<T> implements Game {
             cli.printLine("Correct!");
             return true;
         }
-        cli.printLine(userAnswer + " is wrong answer ;(. Correct answer was " + rightAnswer);
+        cli.printLine("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + rightAnswer + "'");
         return false;
 
     }
