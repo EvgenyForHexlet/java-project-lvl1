@@ -34,7 +34,7 @@ public class GCDGame extends AbstractGame<Integer> {
             int number1 = getRandomNumber();
             int number2 = getRandomNumber();
 
-            getCli().printLine("Question: " + number1 + " and " + number2);
+            getCli().printLine("Question: " + number1 + " " + number2);
             Integer answer = askForAnswer();
             Integer rightAnswer = gcdByEuclidsAlgorithm(number1, number2);
 
