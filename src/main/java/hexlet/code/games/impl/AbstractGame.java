@@ -35,6 +35,7 @@ public abstract class AbstractGame<T> implements Game {
             return true;
         }
         cli.printLine("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + rightAnswer + "'");
+        cli.printLine(getSharedMemory().sayLetsPlayAgain());
         return false;
 
     }
