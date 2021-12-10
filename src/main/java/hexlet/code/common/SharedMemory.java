@@ -19,7 +19,7 @@ public final class SharedMemory {
     }
 
     public String sayLetsPlayAgain() {
-        return "Let's try again, " + user;
+        return "Let's try again, " + user + "!";
     }
 
     public String sayCongrats() {
