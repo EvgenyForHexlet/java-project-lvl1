@@ -5,8 +5,12 @@
 
 Task 5: Even
 
-![alt text](./src/main/resources/2021-12-09_19h03_30.png "demo")
+![alt text](./src/main/resources/2021-12-09_19h03_30.png "Even")
 
 Task 6: Calc
 
-![alt text](./src/main/resources/2021-12-09_20h50_16.png "demo")
+![alt text](./src/main/resources/2021-12-09_20h50_16.png "Calc")
+
+Task 7: GCD
+
+![alt text](./src/main/resources/2021-12-10_19h44_35.png "GCD")

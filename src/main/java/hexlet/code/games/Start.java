@@ -9,6 +9,7 @@ import hexlet.code.games.impl.Exit;
 //import hexlet.code.games.impl.GreetGame;
 //import hexlet.code.games.impl.PrimeGame;
 //import hexlet.code.games.impl.ProgressionGame;
+import hexlet.code.games.impl.GCDGame;
 import hexlet.code.io.Cli;
 
 
@@ -25,7 +26,7 @@ public class Start {
     private final Game exit = new Exit();
     private final Game error = new Error();
     private static final int TRIES = 3;
-    private static final int NUMBER_OF_ALL_GAMES = 4;
+    private static final int NUMBER_OF_ALL_GAMES = 5;
 
 
     /**
@@ -41,7 +42,8 @@ public class Start {
         games[even.getGameNumber()] = even;
         Game calc = new CalculatorGame();
         games[calc.getGameNumber()] = calc;
-//        games[4] = new GCDGame();
+        Game gcd = new GCDGame();
+        games[gcd.getGameNumber()] = gcd;
 //        games[5] = new PrimeGame();
         games[exit.getGameNumber()] = exit;
     }
