@@ -23,7 +23,7 @@ public final class SharedMemory {
     }
 
     public String sayCongrats() {
-        return "Congratulations, " + user;
+        return "Congratulations, " + user + "!";
     }
 
     public String getUser() {
