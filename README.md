@@ -18,3 +18,7 @@ Task 7: GCD
 Task 8: Progression
 
 ![alt text](./src/main/resources/2021-12-10_20h06_33.png "GCD")
+
+Task 9: Prime
+
+![alt text](./src/main/resources/2021-12-10_20h21_24.png "GCD")

@@ -6,15 +6,11 @@ import hexlet.code.common.SharedMemory;
 import hexlet.code.errors.Error;
 import hexlet.code.games.impl.Exit;
 import hexlet.code.games.impl.GCDGame;
+import hexlet.code.games.impl.PrimeGame;
 import hexlet.code.games.impl.ProgressionGame;
 import hexlet.code.io.Cli;
-
-
 import hexlet.code.games.impl.GreetGame;
 
-/**
- *
- */
 public class Start {
 
     private final Cli cli = Cli.getIOManager();
@@ -23,7 +19,7 @@ public class Start {
     private final Game exit = new Exit();
     private final Game error = new Error();
     private static final int TRIES = 3;
-    private static final int NUMBER_OF_ALL_GAMES = 6;
+    private static final int NUMBER_OF_ALL_GAMES = 7;
 
 
     /**
@@ -89,7 +85,8 @@ public class Start {
         games[gcd.getGameNumber()] = gcd;
         Game progerssion = new ProgressionGame();
         games[progerssion.getGameNumber()] = progerssion;
-//        games[5] = new PrimeGame();
+        Game prime = new PrimeGame();
+        games[prime.getGameNumber()] = prime;
         games[exit.getGameNumber()] = exit;
 
     }

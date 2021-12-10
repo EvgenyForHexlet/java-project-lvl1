@@ -24,8 +24,8 @@ public abstract class AbstractGame<T> implements Game {
 
     /**
      * Compares the both answers right answer and answer from user respectively.
-     * @param rightAnswer
-     * @param userAnswer
+     * @param rightAnswer right answer
+     * @param userAnswer user answer
      * @return true if equal, otherwise false
      */
     protected final boolean assertAnswer(T rightAnswer, T userAnswer) {
