@@ -1,50 +1,55 @@
 package hexlet.code.games.impl;
 
 
+import hexlet.code.common.SharedMemory;
+import hexlet.code.io.Cli;
+
 import static hexlet.code.common.MyMath.gcdByEuclidsAlgorithm;
 import static hexlet.code.common.MyMath.getRandomNumber;
 
-public class GCDGame extends AbstractGame<Integer> {
+public class GCDGame {
 
     private static final int GAME_NUMBER = 4;
+
     /**
      * game number.
      *
      * @return game number.
      */
-    public int getGameNumber() {
+    public static int getGameNumber() {
         return GAME_NUMBER;
     }
 
     /**
      * game name.
+     *
      * @return game name.
      */
-    public String getName() {
+    public static String getName() {
         return "GCD";
     }
 
     /**
      * starts the game.
      */
-    public void play() {
+    public static void play() {
         int counter = 0;
-        getCli().printLine("What is the greatest common divisor of two integers?");
-        while (counter < getSharedMemory().getTries()) {
+        Cli.printLine("What is the greatest common divisor of two integers?");
+        while (counter < SharedMemory.getTries()) {
             int number1 = getRandomNumber();
             int number2 = getRandomNumber();
 
-            getCli().printLine("Question: " + number1 + " " + number2);
-            Integer answer = askForAnswer();
+            Cli.printLine("Question: " + number1 + " " + number2);
+            Integer answer = Common.askForAnswer();
             Integer rightAnswer = gcdByEuclidsAlgorithm(number1, number2);
 
-            if (!assertAnswer(rightAnswer, answer)) {
+            if (!Common.assertAnswer(rightAnswer, answer)) {
                 break;
             }
             counter++;
         }
-        if (counter == getSharedMemory().getTries()) {
-            getCli().printLine(getSharedMemory().sayCongrats());
+        if (counter == SharedMemory.getTries()) {
+            Cli.printLine(Common.sayCongrats());
         }
     }
 }

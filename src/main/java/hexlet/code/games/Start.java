@@ -13,11 +13,6 @@ import hexlet.code.games.impl.GreetGame;
 
 public class Start {
 
-    private final Cli cli = Cli.getIOManager();
-    private Game[] games;
-    private final Game greetGame = new GreetGame();
-    private final Game exit = new Exit();
-    private final Game error = new Error();
     private static final int TRIES = 3;
     private static final int NUMBER_OF_ALL_GAMES = 7;
 
@@ -26,7 +21,8 @@ public class Start {
      * default constructor.
      */
     public Start() {
-        init();
+
+        SharedMemory.setTries(TRIES);
     }
 
     /**
@@ -34,60 +30,49 @@ public class Start {
      */
     public void play() {
 
-        cli.printLine("Please enter the game number and press Enter.");
-        cli.printLines(generateGameLines());
-        Integer number = cli.askForInt("Your choice: ");
+        Cli.printLine("Please enter the game number and press Enter.");
+        Cli.printLines(generateGameLines());
+        Integer number = Cli.askForInt("Your choice: ");
 
-        Game game = findGameByNumber(number);
-        if (game.equals(greetGame) || game.equals(exit) || game.equals(error)) {
-            game.play();
-        } else {
-            greetGame.play();
-            game.play();
-        }
-
+        findGameByNumber(number);
     }
 
     private String[] generateGameLines() {
 
-        String[] lines = new String[games.length];
-        for (int i = 1; i < games.length; i++) {
-            String line = games[i].getGameNumber() + " - " + games[i].getName();
-            lines[i - 1] = line;
-        }
-        int exitNumber = 0;
-        lines[games.length - 1] = games[exitNumber].getGameNumber() + " - " + games[exitNumber].getName();
+        String[] lines = new String[NUMBER_OF_ALL_GAMES];
+        lines[GreetGame.getGameNumber() - 1] = GreetGame.getGameNumber() + " - " + GreetGame.getName();
+        lines[EvenGame.getGameNumber() - 1] = EvenGame.getGameNumber() + " - " + EvenGame.getName();
+        lines[CalculatorGame.getGameNumber() - 1] = CalculatorGame.getGameNumber() + " - " + CalculatorGame.getName();
+        lines[GCDGame.getGameNumber() - 1] = GCDGame.getGameNumber() + " - " + GCDGame.getName();
+        lines[ProgressionGame.getGameNumber() - 1]
+                = ProgressionGame.getGameNumber() + " - " + ProgressionGame.getName();
+        lines[PrimeGame.getGameNumber() - 1] = PrimeGame.getGameNumber() + " - " + PrimeGame.getName();
+        lines[NUMBER_OF_ALL_GAMES - 1] = Exit.getGameNumber() + " - " + Exit.getName();
         return lines;
     }
 
-    private Game findGameByNumber(Integer number) {
-
-        if (number != null) {
-            for (Game game : games) {
-                if (game.getGameNumber() == number) {
-                    return game;
-                }
-            }
+    private void findGameByNumber(Integer number) {
+        if (number == 0) {
+            Exit.play();
+            return;
         }
-        return error;
+        if (number <= NUMBER_OF_ALL_GAMES) {
+            Error.play();
+            return;
+        }
+        GreetGame.play();
+
+        if (number == EvenGame.getGameNumber()) {
+            EvenGame.play();
+        } else if (number == CalculatorGame.getGameNumber()) {
+            CalculatorGame.play();
+        } else if (number == GCDGame.getGameNumber()) {
+            GCDGame.play();
+        } else if (number == ProgressionGame.getGameNumber()) {
+            ProgressionGame.play();
+        } else if (number == PrimeGame.getGameNumber()) {
+            PrimeGame.play();
+        }
     }
 
-    private void init() {
-
-        SharedMemory.getSharedMemory().setTries(TRIES);
-        games = new Game[NUMBER_OF_ALL_GAMES];
-        games[greetGame.getGameNumber()] = greetGame;
-        Game even = new EvenGame();
-        games[even.getGameNumber()] = even;
-        Game calc = new CalculatorGame();
-        games[calc.getGameNumber()] = calc;
-        Game gcd = new GCDGame();
-        games[gcd.getGameNumber()] = gcd;
-        Game progerssion = new ProgressionGame();
-        games[progerssion.getGameNumber()] = progerssion;
-        Game prime = new PrimeGame();
-        games[prime.getGameNumber()] = prime;
-        games[exit.getGameNumber()] = exit;
-
-    }
 }

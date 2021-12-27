@@ -1,11 +1,14 @@
 package hexlet.code.games.impl;
 
 
+import hexlet.code.common.SharedMemory;
+import hexlet.code.io.Cli;
+
 import static hexlet.code.common.MyMath.getRandomNumber;
 import static hexlet.code.common.MyMath.processArithmeticOperation;
 import static hexlet.code.common.MyMath.randomArithmeticOperation;
 
-public class CalculatorGame extends AbstractGame<Integer> {
+public class CalculatorGame extends Common {
 
     private static final int GAME_NUMBER = 3;
 
@@ -14,7 +17,7 @@ public class CalculatorGame extends AbstractGame<Integer> {
      *
      * @return game number.
      */
-    public int getGameNumber() {
+    public static int getGameNumber() {
         return GAME_NUMBER;
     }
 
@@ -23,21 +26,21 @@ public class CalculatorGame extends AbstractGame<Integer> {
      *
      * @return game name.
      */
-    public String getName() {
+    public static String getName() {
         return "Calc";
     }
 
     /**
      * starts the game.
      */
-    public void play() {
+    public static void play() {
         int counter = 0;
-        getCli().printLine("What is the result of he expression?");
-        while (counter < getSharedMemory().getTries()) {
+        Cli.printLine("What is the result of he expression?");
+        while (counter < SharedMemory.getTries()) {
             int number1 = getRandomNumber();
             int number2 = getRandomNumber();
             String op = randomArithmeticOperation();
-            getCli().printLine("Question: " + number1 + " " + op + " " + number2);
+            Cli.printLine("Question: " + number1 + " " + op + " " + number2);
             Integer answer = askForAnswer();
             Integer rightAnswer = processArithmeticOperation(number1, number2, op);
 
@@ -47,8 +50,8 @@ public class CalculatorGame extends AbstractGame<Integer> {
 
             counter++;
         }
-        if (counter == getSharedMemory().getTries()) {
-            getCli().printLine(getSharedMemory().sayCongrats());
+        if (counter == SharedMemory.getTries()) {
+            Cli.printLine(Common.sayCongrats());
         }
     }
 

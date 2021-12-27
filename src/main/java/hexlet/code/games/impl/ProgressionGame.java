@@ -1,9 +1,12 @@
 package hexlet.code.games.impl;
 
+import hexlet.code.common.SharedMemory;
+import hexlet.code.io.Cli;
+
 import static hexlet.code.common.MyMath.getRandomNumber;
 import static hexlet.code.common.MyMath.randomProgression;
 
-public class ProgressionGame extends AbstractGame<Integer> {
+public class ProgressionGame extends Common {
 
 
     private static final int GAME_NUMBER = 5;
@@ -13,7 +16,7 @@ public class ProgressionGame extends AbstractGame<Integer> {
      *
      * @return game number.
      */
-    public int getGameNumber() {
+    public static int getGameNumber() {
         return GAME_NUMBER;
     }
 
@@ -22,20 +25,20 @@ public class ProgressionGame extends AbstractGame<Integer> {
      *
      * @return game name.
      */
-    public String getName() {
+    public static String getName() {
         return "Progression";
     }
 
     /**
      * starts the game.
      */
-    public void play() {
+    public static void play() {
         int counter = 0;
-        getCli().printLine("What is the result of he expression?");
-        while (counter < getSharedMemory().getTries()) {
+        Cli.printLine("What is the result of he expression?");
+        while (counter < SharedMemory.getTries()) {
             int[] progression = randomProgression();
             int indexOfMissingNumber = getRandomNumber(progression.length);
-            getCli().printLine("Question: " + progressionAsString(progression, indexOfMissingNumber));
+            Cli.printLine("Question: " + progressionAsString(progression, indexOfMissingNumber));
             Integer answer = askForAnswer();
             Integer rightAnswer = progression[indexOfMissingNumber];
 
@@ -45,12 +48,12 @@ public class ProgressionGame extends AbstractGame<Integer> {
 
             counter++;
         }
-        if (counter == getSharedMemory().getTries()) {
-            getCli().printLine(getSharedMemory().sayCongrats());
+        if (counter == SharedMemory.getTries()) {
+            Cli.printLine(Common.sayCongrats());
         }
     }
 
-    private String progressionAsString(int[] progression, int indexOfMissingNumber) {
+    private static String progressionAsString(int[] progression, int indexOfMissingNumber) {
         String result = "";
         for (int i = 0; i < progression.length; i++) {
             if (i == indexOfMissingNumber) {
