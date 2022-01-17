@@ -30,13 +30,13 @@ public class PrimeGame {
         for (int i = 0; i < rounds.length; i++) {
             // to avoid value 1
             int number = getRandomNumber() + 1;
-            rounds[i][0] = "" + getRandomNumber() + 1;
+            rounds[i][0] = "" + number;
             rounds[i][1] = isPrime(number) ? "yes" : "no";
         }
     }
 
     private static boolean isPrime(int number) {
-        if (number < 1) {
+        if (number < 2) {
             return false;
         }
         for (int i = 2; i <= number / 2; i++) {
