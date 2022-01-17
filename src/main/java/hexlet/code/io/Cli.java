@@ -6,13 +6,6 @@ public final class Cli {
 
     private static Scanner scanner = new Scanner(System.in);
 
-
-    public static void printLines(String[] textLines) {
-        for (int i = 0; i < textLines.length; i++) {
-            printLine(textLines[i]);
-        }
-    }
-
     public static void printLine(String line) {
         System.out.println(line);
     }

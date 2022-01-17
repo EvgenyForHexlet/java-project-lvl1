@@ -2,70 +2,79 @@ package hexlet.code;
 
 
 import hexlet.code.common.SharedMemory;
-import hexlet.code.errors.Error;
-import hexlet.code.games.impl.CalculatorGame;
-import hexlet.code.games.impl.EvenGame;
-import hexlet.code.games.impl.Exit;
-import hexlet.code.games.impl.GCDGame;
-import hexlet.code.games.impl.GreetGame;
-import hexlet.code.games.impl.PrimeGame;
-import hexlet.code.games.impl.ProgressionGame;
+import hexlet.code.games.CalculatorGame;
+import hexlet.code.games.EvenGame;
+import hexlet.code.games.GCDGame;
+import hexlet.code.games.GreetGame;
+import hexlet.code.games.PrimeGame;
+import hexlet.code.games.ProgressionGame;
 import hexlet.code.io.Cli;
 
 public class App {
 
-    private static final int TRIES = 3;
-    private static final int NUMBER_OF_ALL_GAMES = 7;
+    private static final int GAME_HI = 1;
+    private static final int GAME_EVEN = 2;
+    private static final int GAME_CALC = 3;
+    private static final int GAME_GCD = 4;
+    private static final int GAME_PROG = 5;
+    private static final int GAME_PRIME = 6;
+    private static final int ROUNDS = 3;
+    private static final String[][] ROUND_LIST = new String[ROUNDS][2];
 
     public static void main(String[] args) {
-        SharedMemory.setTries(TRIES);
         play();
     }
 
     private static void play() {
 
         Cli.printLine("Please enter the game number and press Enter.");
-        Cli.printLines(generateGameLines());
+        printMenuWithGames();
         Integer number = Cli.askForInt("Your choice: ");
 
         findGameByNumber(number);
     }
 
-    private static String[] generateGameLines() {
+    private static void printMenuWithGames() {
 
-        String[] lines = new String[NUMBER_OF_ALL_GAMES];
-        lines[GreetGame.getGameNumber() - 1] = GreetGame.getGameNumber() + " - " + GreetGame.getName();
-        lines[EvenGame.getGameNumber() - 1] = EvenGame.getGameNumber() + " - " + EvenGame.getName();
-        lines[CalculatorGame.getGameNumber() - 1] = CalculatorGame.getGameNumber() + " - " + CalculatorGame.getName();
-        lines[GCDGame.getGameNumber() - 1] = GCDGame.getGameNumber() + " - " + GCDGame.getName();
-        lines[ProgressionGame.getGameNumber() - 1]
-                = ProgressionGame.getGameNumber() + " - " + ProgressionGame.getName();
-        lines[PrimeGame.getGameNumber() - 1] = PrimeGame.getGameNumber() + " - " + PrimeGame.getName();
-        lines[NUMBER_OF_ALL_GAMES - 1] = Exit.getGameNumber() + " - " + Exit.getName();
-        return lines;
+        Cli.printLine(GAME_HI + " - " + GreetGame.getName());
+        Cli.printLine(GAME_EVEN + " - " + EvenGame.getName());
+        Cli.printLine(GAME_CALC + " - " + CalculatorGame.getName());
+        Cli.printLine(GAME_GCD + " - " + GCDGame.getName());
+        Cli.printLine(GAME_PROG + " - " + ProgressionGame.getName());
+        Cli.printLine(GAME_PRIME + " - " + PrimeGame.getName());
+        Cli.printLine("0 - Exit");
+
     }
 
     private static void findGameByNumber(Integer number) {
-        if (number == 0) {
-            Exit.play();
-            return;
-        }
-        if (number >= NUMBER_OF_ALL_GAMES) {
-            Error.play();
-            return;
-        }
-        GreetGame.play();
 
-        if (number == EvenGame.getGameNumber()) {
-            EvenGame.play();
-        } else if (number == CalculatorGame.getGameNumber()) {
-            CalculatorGame.play();
-        } else if (number == GCDGame.getGameNumber()) {
-            GCDGame.play();
-        } else if (number == ProgressionGame.getGameNumber()) {
-            ProgressionGame.play();
-        } else if (number == PrimeGame.getGameNumber()) {
-            PrimeGame.play();
+        switch (number) {
+            case 0:
+                String sayGoodbye = "Good bye";
+                sayGoodbye += SharedMemory.getUser().equals("") ? "" : ", " + SharedMemory.getUser();
+                Cli.printLine(sayGoodbye);
+                break;
+            case GAME_HI:
+                GreetGame.play();
+                break;
+            case GAME_EVEN:
+                EvenGame.play(ROUND_LIST);
+                break;
+            case GAME_CALC:
+                CalculatorGame.play(ROUND_LIST);
+                break;
+            case GAME_GCD:
+                GCDGame.play(ROUND_LIST);
+                break;
+            case GAME_PROG:
+                ProgressionGame.play(ROUND_LIST);
+                break;
+            case GAME_PRIME:
+                PrimeGame.play(ROUND_LIST);
+                break;
+            default:
+                Cli.printError("The input was wrong. Please start the game again.");
+
         }
     }
 }
