@@ -1,7 +1,5 @@
 package hexlet.code;
 
-
-import hexlet.code.common.SharedMemory;
 import hexlet.code.games.CalculatorGame;
 import hexlet.code.games.EvenGame;
 import hexlet.code.games.GCDGame;
@@ -50,9 +48,7 @@ public class App {
 
         switch (number) {
             case 0:
-                String sayGoodbye = "Good bye";
-                sayGoodbye += SharedMemory.getUser().equals("") ? "" : ", " + SharedMemory.getUser();
-                Cli.printLine(sayGoodbye);
+                Cli.printLine("Good bye");
                 break;
             case GAME_HI:
                 GreetGame.play();

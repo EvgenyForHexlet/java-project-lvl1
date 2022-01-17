@@ -1,12 +1,10 @@
 package hexlet.code;
 
-import hexlet.code.common.SharedMemory;
 import hexlet.code.io.Cli;
 
 
 public class GameEngine {
 
-    private static final int TRIES = 3;
     private static String user;
 
 
@@ -14,7 +12,7 @@ public class GameEngine {
         greeting();
         if (rule != "") {
             Cli.printLine(rule);
-            int counter = 1;
+            int counter = 0;
             for (String[] round : questionAndRightAnswer) {
                 Cli.printLine("Question: " + round[0]);
                 String answer = Cli.askForString("Your answer: ");
@@ -27,7 +25,7 @@ public class GameEngine {
                 }
                 counter++;
             }
-            if (counter == TRIES) {
+            if (counter == questionAndRightAnswer.length) {
                 Cli.printLine(GameEngine.sayCongrats());
             }
         }
@@ -41,11 +39,11 @@ public class GameEngine {
     }
 
     private static String sayLetsPlayAgain() {
-        return "Let's try again, " + SharedMemory.getUser() + "!";
+        return "Let's try again, " + user + "!";
     }
 
     private static String sayCongrats() {
-        return "Congratulations, " + SharedMemory.getUser() + "!";
+        return "Congratulations, " + user + "!";
     }
 
 }
