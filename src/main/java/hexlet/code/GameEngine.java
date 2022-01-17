@@ -18,12 +18,12 @@ public class GameEngine {
                 String answer = Cli.askForString("Your answer: ");
                 if (round[1].equals(answer)) {
                     Cli.printLine("Correct!");
+                    counter++;
                 } else {
                     Cli.printLine("'" + answer + "' is wrong answer ;(. Correct answer was '" + round[1] + "'");
                     Cli.printLine(sayLetsPlayAgain());
                     break;
                 }
-                counter++;
             }
             if (counter == questionAndRightAnswer.length) {
                 Cli.printLine(GameEngine.sayCongrats());
