@@ -3,7 +3,6 @@ package hexlet.code;
 import hexlet.code.games.CalculatorGame;
 import hexlet.code.games.EvenGame;
 import hexlet.code.games.GCDGame;
-import hexlet.code.games.GreetGame;
 import hexlet.code.games.PrimeGame;
 import hexlet.code.games.ProgressionGame;
 import hexlet.code.io.Cli;
@@ -34,7 +33,7 @@ public class App {
 
     private static void printMenuWithGames() {
 
-        Cli.printLine(GAME_HI + " - " + GreetGame.getName());
+        Cli.printLine(GAME_HI + " - " + "Greet");
         Cli.printLine(GAME_EVEN + " - " + EvenGame.getName());
         Cli.printLine(GAME_CALC + " - " + CalculatorGame.getName());
         Cli.printLine(GAME_GCD + " - " + GCDGame.getName());
@@ -51,7 +50,7 @@ public class App {
                 Cli.printLine("Good bye");
                 break;
             case GAME_HI:
-                GreetGame.play();
+                GameEngine.greeting();
                 break;
             case GAME_EVEN:
                 EvenGame.play(ROUND_LIST);
