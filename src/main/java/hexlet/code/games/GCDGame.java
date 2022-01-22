@@ -18,13 +18,11 @@ public class GCDGame {
 
     /**
      * starts the game.
-     *
-     * @param rounds
      */
-    public static void play(String[][] rounds) {
+    public static void play() {
         String rule = "What is the greatest common divisor of two integers?";
-        generateQuestionsAndAnswers(rounds);
-        GameEngine.play(rule, rounds);
+        generateQuestionsAndAnswers(GameEngine.ROUND_LIST);
+        GameEngine.play(rule);
 
     }
 

@@ -23,12 +23,11 @@ public class CalculatorGame {
     /**
      * starts the game.
      *
-     * @param rounds
      */
-    public static void play(String[][] rounds) {
+    public static void play() {
         String rule = "What is the result of he expression?";
-        generateQuestionsAndAnswers(rounds);
-        GameEngine.play(rule, rounds);
+        generateQuestionsAndAnswers(GameEngine.ROUND_LIST);
+        GameEngine.play(rule);
     }
 
     private static void generateQuestionsAndAnswers(String[][] rounds) {

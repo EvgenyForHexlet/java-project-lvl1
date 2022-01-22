@@ -23,34 +23,30 @@ public class ProgressionGame {
 
     /**
      * starts the game.
-     *
-     * @param rounds
      */
-    public static void play(String[][] rounds) {
+    public static void play() {
 
         String rule = "What is the result of he expression?";
-        generateQuestionsAndAnswers(rounds);
-        GameEngine.play(rule, rounds);
+        generateQuestionsAndAnswers(GameEngine.ROUND_LIST);
+        GameEngine.play(rule);
     }
 
     private static void generateQuestionsAndAnswers(String[][] rounds) {
         for (int i = 0; i < rounds.length; i++) {
-            int[] progression = randomProgression();
+            int[] progression = new int[ARRAY_LENGTH];
+            int step = new Random().nextInt(RANDOM_STEP_BOUNBD) + 1;
+            progression[0] = new Random().nextInt(RANDOM_START_POINT_BOUND);
+            fillProgressionArray(progression, step);
             int indexOfMissingNumber = getRandomNumber(progression.length);
             rounds[i][0] = progressionAsString(progression, indexOfMissingNumber);
             rounds[i][1] = "" + progression[indexOfMissingNumber];
         }
     }
 
-    private static int[] randomProgression() {
-        int[] result = new int[ARRAY_LENGTH];
-        int step = new Random().nextInt(RANDOM_STEP_BOUNBD) + 1;
-        result[0] = new Random().nextInt(RANDOM_START_POINT_BOUND);
-
-        for (int i = 1; i < result.length; i++) {
-            result[i] = result[i - 1] + step;
+    private static void fillProgressionArray(int[] progressionArray, int step) {
+        for (int i = 1; i < progressionArray.length; i++) {
+            progressionArray[i] = progressionArray[i - 1] + step;
         }
-        return result;
     }
 
     private static String progressionAsString(int[] progression, int indexOfMissingNumber) {

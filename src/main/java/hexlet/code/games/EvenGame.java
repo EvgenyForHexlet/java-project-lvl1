@@ -18,13 +18,11 @@ public class EvenGame {
 
     /**
      * starts the game.
-     *
-     * @param rounds game rounds
      */
-    public static void play(String[][] rounds) {
+    public static void play() {
         String rule = "Answer 'yes' if number even otherwise answer 'no'";
-        generateQuestionsAndAnswers(rounds);
-        GameEngine.play(rule, rounds);
+        generateQuestionsAndAnswers(GameEngine.ROUND_LIST);
+        GameEngine.play(rule);
     }
 
     private static void generateQuestionsAndAnswers(String[][] rounds) {

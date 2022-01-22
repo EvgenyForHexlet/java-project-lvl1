@@ -15,8 +15,6 @@ public class App {
     private static final int GAME_GCD = 4;
     private static final int GAME_PROG = 5;
     private static final int GAME_PRIME = 6;
-    private static final int ROUNDS = 3;
-    private static final String[][] ROUND_LIST = new String[ROUNDS][2];
 
     public static void main(String[] args) {
         play();
@@ -53,19 +51,19 @@ public class App {
                 GameEngine.greeting();
                 break;
             case GAME_EVEN:
-                EvenGame.play(ROUND_LIST);
+                EvenGame.play();
                 break;
             case GAME_CALC:
-                CalculatorGame.play(ROUND_LIST);
+                CalculatorGame.play();
                 break;
             case GAME_GCD:
-                GCDGame.play(ROUND_LIST);
+                GCDGame.play();
                 break;
             case GAME_PROG:
-                ProgressionGame.play(ROUND_LIST);
+                ProgressionGame.play();
                 break;
             case GAME_PRIME:
-                PrimeGame.play(ROUND_LIST);
+                PrimeGame.play();
                 break;
             default:
                 Cli.printError("The input was wrong. Please start the game again.");
