@@ -10,7 +10,7 @@ public class GameEngine {
     public static final String[][] ROUND_LIST = new String[ROUNDS][2];
 
     public static void play(String rule) {
-        String user = greeting();
+        String user = greetingBlock();
         Cli.printLine(rule);
         for (String[] round : ROUND_LIST) {
             Cli.printLine("Question: " + round[0]);
@@ -26,7 +26,13 @@ public class GameEngine {
         Cli.printLine(GameEngine.sayCongrats(user));
     }
 
-    public static String greeting() {
+    /**
+     * This method greets user and asks him for name.
+     * The Name will be given back for further usage.
+     *
+     * @return user name
+     */
+    public static String greetingBlock() {
         Cli.printLine("Welcome to the Brain Games!");
         String user = Cli.askForString("May I have your name? ");
         Cli.printLine("Hello, " + user + "!");

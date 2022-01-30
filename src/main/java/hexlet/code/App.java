@@ -26,7 +26,7 @@ public class App {
         printMenuWithGames();
         Integer number = Cli.askForInt("Your choice: ");
 
-        findGameByNumber(number);
+        findGameByNumberAndStartIt(number);
     }
 
     private static void printMenuWithGames() {
@@ -41,14 +41,14 @@ public class App {
 
     }
 
-    private static void findGameByNumber(Integer number) {
+    private static void findGameByNumberAndStartIt(Integer number) {
 
         switch (number) {
             case 0:
                 Cli.printLine("Good bye");
                 break;
             case GAME_HI:
-                GameEngine.greeting();
+                GameEngine.greetingBlock();
                 break;
             case GAME_EVEN:
                 EvenGame.play();
